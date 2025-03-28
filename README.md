@@ -5,7 +5,7 @@ Data is available on Figshare doi: 10.25418/crick.28685360.
 
 ## :woman_technologist: Getting started
 1. Clone the repository
-2. Download the data (link)
+2. Download the data (doi: 10.25418/crick.28685360)
 3. Create a [conda environment](https://docs.conda.io/projects/conda/en/stable/user-guide/getting-started.html) with necessary packages
 ```
 conda create -n my_env python=3.8.16 numpy=1.23.5 pandas=1.5.2 scipy=1.10.0 matplotlib seaborn jupyter
