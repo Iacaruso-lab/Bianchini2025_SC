@@ -1,7 +1,7 @@
 # Functional specialisation of multisensory temporal integration in the mouse superior colliculus
 Code to reproduce the figures from Bianchini et al., "Functional specialisation of multisensory temporal integration in the mouse superior colliculus" available at https://www.biorxiv.org/content/10.1101/2025.02.11.637674v3
 
-Data is available on Figshare (link here).
+Data is available on Figshare doi: 10.25418/crick.28685360.
 
 ## :woman_technologist: Getting started
 1. Clone the repository
