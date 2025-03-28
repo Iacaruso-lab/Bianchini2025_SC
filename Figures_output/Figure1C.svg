@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="164.563104pt" height="117.44348pt" viewBox="0 0 164.563104 117.44348" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2025-03-03T17:39:14.018705</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.6.0, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M -0 117.44348 
+L 164.563104 117.44348 
+L 164.563104 0 
+L -0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 121.025897 57.082529 
+C 121.025897 47.059813 117.537882 37.342896 111.163658 29.608292 
+C 104.789434 21.873687 95.917964 16.593371 86.079892 14.678383 
+C 76.24182 12.763396 66.037477 14.330593 57.227475 19.109578 
+C 48.417472 23.888562 41.539408 31.587714 37.779991 40.878658 
+L 77.825897 57.082529 
+L 121.025897 57.082529 
+z
+" style="fill: #dcdcdc; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 36.954592 45.119072 
+C 34.191952 51.946601 33.220734 59.36855 34.133568 66.677043 
+C 35.046402 73.985535 37.813315 80.94059 42.170408 86.878861 
+L 77.000497 61.322943 
+L 36.954592 45.119072 
+z
+" style="fill: #4d98ce; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 42.170408 86.878861 
+C 46.02109 92.126945 51.008585 96.437479 56.759078 99.48739 
+C 62.509572 102.537301 68.875718 104.248438 75.380374 104.492553 
+L 77.000497 61.322943 
+L 42.170408 86.878861 
+z
+" style="fill: #ee8222; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 75.380374 104.492553 
+C 79.944305 104.663834 84.50666 104.110282 88.897209 102.85255 
+C 93.287757 101.594819 97.451206 99.648748 101.23221 97.086949 
+L 77.000497 61.322943 
+L 75.380374 104.492553 
+z
+" style="fill: #c884bb; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 101.23221 97.086949 
+C 107.074298 93.128673 111.858485 87.798566 115.164943 81.564364 
+C 118.4714 75.330161 120.200496 68.379715 120.200497 61.322949 
+L 77.000497 61.322943 
+L 101.23221 97.086949 
+z
+" style="fill: #af4e9d; stroke: #ffffff; stroke-linejoin: miter"/>
+   </g>
+   <g id="matplotlib.axis_1"/>
+   <g id="matplotlib.axis_2"/>
+   <g id="text_1">
+    <text style="font: 10px 'sans-serif'" transform="translate(86.905292 7.598437)">Non-responsive</text>
+    <text style="font: 10px 'sans-serif'" transform="translate(86.905292 18.79625)">44%</text>
+   </g>
+   <g id="text_2">
+    <text style="font: 10px 'sans-serif'" transform="translate(0 64.372921)">Visual</text>
+    <text style="font: 10px 'sans-serif'" transform="translate(7.620313 75.570734)">16%</text>
+   </g>
+   <g id="text_3">
+    <text style="font: 10px 'sans-serif'" transform="translate(12.361499 100.464303)">Auditory</text>
+    <text style="font: 10px 'sans-serif'" transform="translate(32.508374 111.662116)">14%</text>
+   </g>
+   <g id="text_4">
+    <text style="font: 10px 'sans-serif'" transform="translate(90.08688 104.16598)">Bimodal</text>
+    <text style="font: 10px 'sans-serif'" transform="translate(90.08688 115.363792)">10%</text>
+   </g>
+   <g id="text_5">
+    <text style="font: 10px 'sans-serif'" transform="translate(118.981387 80.748975)">Gated</text>
+    <text style="font: 10px 'sans-serif'" transform="translate(118.981387 91.946787)">16%</text>
+   </g>
+  </g>
+ </g>
+</svg>
