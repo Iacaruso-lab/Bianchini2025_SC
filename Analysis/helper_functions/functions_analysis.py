@@ -45,6 +45,7 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 from matplotlib.colors import LogNorm
 from matplotlib.colors import LinearSegmentedColormap
+from matplotlib.colors import ListedColormap
 from matplotlib.patches import Ellipse
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
@@ -96,6 +97,28 @@ def hierarchical_sample_latency(df, rng):
                 sampled_data.extend(sampled_neurons)
     
     return np.array(sampled_data)
+
+#%% Hierarchical paired bootstrap
+def hierarchical_paired_sample(df, rng):
+    sampled_obs = []
+    sampled_pred = []
+    
+    animals = df['animal_ID'].unique()
+    sampled_animals = rng.choice(animals, size=len(animals), replace=True)
+    
+    for animal in sampled_animals:
+        df_animal = df[df['animal_ID'] == animal]
+        experiments = df_animal['experiment_ID'].unique()
+        sampled_experiments = rng.choice(experiments, size=len(experiments), replace=True)
+        
+        for exp in sampled_experiments:
+            df_exp = df_animal[df_animal['experiment_ID'] == exp]
+            if len(df_exp) > 0:
+                sampled_rows = df_exp.sample(n=len(df_exp), replace=True, random_state=rng)
+                sampled_obs.extend(sampled_rows['obs_delay'].values)
+                sampled_pred.extend(sampled_rows['pred_delay'].values)
+    
+    return np.array(sampled_obs), np.array(sampled_pred)
 
 #%% Functions for plotting RF mapping
 
