@@ -1,0 +1,50 @@
+%% Code to run all LMM mentioned in the figure codes
+
+%% 1. Differences in depth distribution based on modality of the neurons
+
+% load the dataframe
+
+clc
+clear all
+df = readtable('depth_distribution_neurons.csv');
+
+% run model
+
+% Convert modality to categorical
+df.modality = categorical(df.modality);
+
+% Set 'non-responsive' as the reference level
+df.modality = reordercats(df.modality, ...
+    {'non-responsive', 'visual', 'auditory', 'audio-visual', 'gated'});
+
+% Optional: convert IDs to categorical if needed
+df.animal_ID = categorical(df.animal_ID);
+df.experiment_ID = categorical(df.experiment_ID);
+
+formula = ['depth_norm ~ 1 + modality + (1|animal_ID) + (1|experiment_ID)'];
+model1 = fitlme(df, formula);
+res0 = model1.Coefficients;
+results = anova(model1)
+
+%% 2. Check for differences in anatomical distribution of neurons based on modality
+
+% load the dataframe
+
+clc
+clear all
+df = readtable('df_all_modalities.csv');
+
+% run model
+df.Modality = categorical(df.Modality);
+df.Modality = reordercats(df.Modality, {'nr','auditory', 'visual', 'multisensory'});
+formula = ['AP ~ Modality + (1 | Animal)']
+model1 = fitlme(df, formula) 
+
+formula = ['ML ~ Modality + (1 | Animal)']
+model1 = fitlme(df, formula) 
+
+formula = ['Depth ~ Modality + (1 | Animal)']
+model1 = fitlme(df, formula) 
+
+
+%% 3. 

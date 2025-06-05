@@ -372,5 +372,9 @@ retinotopy_dataset.locs = n_col*n_rows;
 retinotopy_dataset.stims = [1,locs; locs+1,locs*2; locs*2+1,locs*3];
 retinotopy_dataset.slices_degrees = reshape(extractfield(neuron_matrix,'slices_degrees'),7,[])';
 
+retinotopy_dataset.coord3D = reshape(extractfield(neuron_matrix,'coord3D'),3,[])';
+
 file_path = fullfile('Z:\home\shared\Gaia\Coliseum\Delays\paper_code\Datasets\neurons_datasets', ['retinotopy_dataset' '.mat']);
 save(file_path,'retinotopy_dataset','-v7.3')
+
+

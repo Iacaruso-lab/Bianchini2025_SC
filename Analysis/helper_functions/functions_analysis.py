@@ -38,11 +38,14 @@ from itertools import combinations
 from tqdm import tqdm
 from math import log, sqrt
 from scipy.stats import zscore
+from collections import defaultdict
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 from matplotlib.colors import LogNorm
+from matplotlib.colors import LinearSegmentedColormap
+from matplotlib.patches import Ellipse
 from mpl_toolkits.axes_grid1 import make_axes_locatable
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 
@@ -67,9 +70,55 @@ from sklearn.linear_model import LinearRegression
 from sklearn.inspection import partial_dependence, PartialDependenceDisplay
 from sklearn.metrics import r2_score, confusion_matrix
 from sklearn.preprocessing import StandardScaler
-
+from collections import defaultdict
+from matplotlib.patches import Rectangle
+from scipy.stats import norm
 # Configure matplotlib
 plt.rcParams["svg.fonttype"] = "none"
+
+#%% Functions for hierarchical testing
+
+# Hierarchical bootstrap function
+def hierarchical_sample_latency(df, rng):
+    sampled_data = []
+    unique_animals = df['animal'].unique()
+    resampled_animals = rng.choice(unique_animals, size=len(unique_animals), replace=True)
+    
+    for animal in resampled_animals:
+        df_animal = df[df['animal'] == animal]
+        unique_exps = df_animal['experiment'].unique()
+        resampled_exps = rng.choice(unique_exps, size=len(unique_exps), replace=True)
+        
+        for exp in resampled_exps:
+            neurons = df_animal[df_animal['experiment'] == exp]['latency'].values
+            if len(neurons) > 0:
+                sampled_neurons = rng.choice(neurons, size=len(neurons), replace=True)
+                sampled_data.extend(sampled_neurons)
+    
+    return np.array(sampled_data)
+
+#%% Functions for plotting RF mapping
+
+# Helper function to compute mean, std, SEM, and 90% CI
+def compute_stats(data):
+    """Compute mean, standard deviation, SEM, and 90% CI."""
+    if len(data) == 0:
+        return np.zeros(2), np.zeros(2)  # Return zero arrays if data is empty
+    
+    mean = np.mean(data, axis=0)
+    std = np.std(data, axis=0)
+    sem = std / np.sqrt(len(data))
+    t_90 = stats.t.ppf(0.95, df=len(data)-1)  # 90% CI
+    ci_90 = sem * t_90
+    return mean, ci_90
+
+# Helper function to add confidence ellipse
+def add_ellipse(ax, mean, ci_90, edgecolor, facecolor):
+    ellipse = Ellipse(
+        mean, width=ci_90[0] * 2, height=ci_90[1] * 2,
+        edgecolor=edgecolor, facecolor=facecolor, linewidth=1
+    )
+    ax.add_patch(ellipse)
 
 
 #%% logistic pca from here: https://github.com/brudfors/logistic-PCA-Tipping
