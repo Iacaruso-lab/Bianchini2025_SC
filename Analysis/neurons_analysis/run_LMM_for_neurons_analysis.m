@@ -83,7 +83,7 @@ df = readtable('observed_vs_predicted_delay.csv');
 formula = ['obs_delay ~ 1 + pred_delay + (1|animal_ID) + (1|experiment_ID)'];
 model1 = fitlme(df, formula)
 
-%% 5. Check whther MII varies betwen delays
+%% 5. Check whether MII varies betwen delays
 
 % load the dataframe
 
@@ -93,5 +93,31 @@ df = readtable('MII_data_for_lmm.csv');
 
 % run model
 formula = 'MII_value ~ delay + (1|neuron_ID) + (1|animal_ID) + (1|experiment_ID)';
+model1 = fitlme(df, formula)
+
+%% 6. Check whether MII varies betwen delays - including all delays before and after
+
+% load the dataframe
+
+clc
+clear all
+df = readtable('MII_data_for_all_delaysBA.csv');
+
+% run model
+formula = 'MII_value ~ delay + (1|neuron_ID) + (1|animal_ID) + (1|experiment_ID)';
+model1 = fitlme(df, formula)
+res0 = model1.Coefficients;
+results = anova(model1)
+
+%% 7. Check whether MII varies betwen delays: splitting delays between category before and after
+
+% load the dataframe
+
+clc
+clear all
+df = readtable('MII_data_onlyBA_delaysBA.csv');
+
+% run model
+formula = 'MII ~ condition + (1|animal_ID) + (1|experiment_ID)';
 model1 = fitlme(df, formula)
 
