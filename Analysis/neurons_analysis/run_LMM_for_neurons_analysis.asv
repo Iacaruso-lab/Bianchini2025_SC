@@ -49,8 +49,64 @@ model1 = fitlme(df, formula)
 
 %% 3. Check for differences in selectivity, FR modualtion index and reliability amongst delays
 
-delay_neurons_properties
+% load the dataframe
+
+clc
+clear all
+df = readtable('delay_neurons_properties.csv');
 
 
+%%
 
+formula = ['selectivity ~ 1 + pref_delay']%+ (1|animal_ID) + (1|experiment_ID)'];
+model1 = fitlme(df, formula)
+res0 = model1.Coefficients;
+results = anova(model1)
+
+[p, tbl, stats] = anovan(df.selectivity,    {df.pref_delay, df.animal_ID, df.experiment_ID}, ...
+    'model', 'linear', ...
+    'random', [2 3], ...  % animal_ID and experiment_ID as random
+    'varnames', {'pref_delay', 'animal_ID', 'experiment_ID'})
+
+%%
+% run model
+formula = ['reliability ~ 1 + pref_delay + (1|animal_ID) + (1|experiment_ID)'];
+model1 = fitlme(df, formula)
+
+formula = ['modulation_index ~ 1 + pref_delay + (1|animal_ID) + (1|experiment_ID)'];
+model1 = fitlme(df, formula)
+
+formula = ['selectivity ~ 1 + pref_delay ']%+ (1|animal_ID) + (1|experiment_ID)'];
+model1 = fitlme(df, formula)
+
+formula = ['pref_delay ~ 1 + selectivity + reliability + modulation_index + (1|animal_ID) + (1|experiment_ID)'];
+model1 = fitlme(df, formula)
+res0 = model1.Coefficients;
+results = anova(model1)
+idx = strcmp(res0.Name, 'pref_delay');
+selectivity_slope = res0.Estimate(idx)*10
+
+%% 4. Check relationship between observed and predicted (based on sum) preferred delay
+
+% load the dataframe
+
+clc
+clear all
+df = readtable('observed_vs_predicted_delay.csv');
+
+% run model
+formula = ['obs_delay ~ 1 + pred_delay + (1|animal_ID) + (1|experiment_ID)'];
+model1 = fitlme(df, formula)
+
+%% 5. Check whther MII varies betwen delays
+
+% load the dataframe
+
+clc
+clear all
+df = readtable('MII_data_for_lmm.csv');
+
+% run model
+formula = 'MII_value ~ delay + (1|neuron_ID) + (1|animal_ID) + (1|experiment_ID)';
+model1 = fitlme(df, formula)
 

@@ -55,19 +55,21 @@ clc
 clear all
 df = readtable('delay_neurons_properties.csv');
 
+%%
 % run model
 formula = ['reliability ~ 1 + pref_delay + (1|animal_ID) + (1|experiment_ID)'];
+model1 = fitlme(df, formula)
+
+formula = ['modulation_index ~ 1 + pref_delay + (1|animal_ID) + (1|experiment_ID)'];
 model1 = fitlme(df, formula)
 
 formula = ['selectivity ~ 1 + pref_delay ']%+ (1|animal_ID) + (1|experiment_ID)'];
 model1 = fitlme(df, formula)
 
-formula = ['pref_delay ~ 1 + selectivity + reliability + modulation_index + (1|animal_ID) + (1|experiment_ID)'];
-model1 = fitlme(df, formula)
 res0 = model1.Coefficients;
 results = anova(model1)
-idx = strcmp(res0.Name, 'selectivity');
-selectivity_slope = res0.Estimate(idx)*10
+idx = strcmp(res0.Name, 'pref_delay');
+selectivity_slope = res0.Estimate(idx)
 
 %% 4. Check relationship between observed and predicted (based on sum) preferred delay
 
