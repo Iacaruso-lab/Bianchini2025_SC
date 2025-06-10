@@ -42,3 +42,7 @@ The **Analysis folder** is further divided into five subfolders:
 Each folder contains a main Jupyter notebook (```Main_analysis_code```) and additional scripts to run parts of the analysis. These scripts are referenced in the main Jupyter notebook.
 The **Figures_code** folder contains the code needed to reproduce each figure from the paper. The figures are then saved in the **Figures_output** folder.
 
+## Dependencies
+
+- ZETA test: https://github.com/JorritMontijn/zetatest
+- https://github.com/cortex-lab/spikes
